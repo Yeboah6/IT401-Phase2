@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEasy - About Me</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        .about-section {
+            padding: 4rem 0;
+        }
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #3498db;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .about-content {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .about-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        .about-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .js-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .js-button:hover {
+            background-color: #2980b9;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+        .footer-links li {
+            margin: 0 1rem;
+        }
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: #3498db;
+        }
+
+        /* Popup Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #7f8c8d;
+            background: none;
+            border: none;
+            z-index: 10;
+        }
+        .close-btn:hover {
+            color: #e74c3c;
+        }
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+        }
+        .modal-header img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+        .modal-header h3 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+        }
+        .modal-body {
+            padding: 1.5rem;
+        }
+        .modal-body img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .modal-body p {
+            line-height: 1.6;
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+        .modal-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+        .modal-nav button {
+            background-color: #fff;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .modal-nav button:hover {
+            background-color: #fff;
+        }
+        .modal-nav button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">ShopEasy</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="picture.html">Products</a></li>
+                    <li><a href="audio.html">Audio</a></li>
+                    <li><a href="video.html">Video</a></li>
+                    <li><a href="about.html" style="color: #3498db;">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-container">
+                <img src="images/profile.jpg" alt="Profile Picture" class="profile-image">
+                <div class="about-content">
+                    <h2 class="about-title">About Me</h2>
+                    <p class="about-text">
+                        Hello! I'm Yeboah Solomon Opoku, the founder and CEO of ShopEasy. With over 5 years of experience in -commerce and retail technology, I've always been passionate about creating seamless shopping experiences for customers.
+                    </p>
+                    <p class="about-text">
+                        I started ShopEasy with a simple mission: to make online shopping more accessible, enjoyable, and trustworthy. Our platform brings together the best products from verified sellers, ensuring quality and customer satisfaction with every purchase.
+                    </p>
+                    <p class="about-text">
+                        When I'm not working on improving ShopEasy, you can find me exploring new technologies, reading about consumer behavior, or spending time with my family. I believe that technology should enhance our lives, and that's exactly what we strive to do at ShopEasy.
+                    </p>
+                    <button class="js-button" onclick="showPopup()">Click to Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popup Modal -->
+    <div id="popupModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closePopup()">&times;</button>
+            <div class="modal-header">
+                <img src="images/profile.jpg" alt="Yeboah Solomon Opoku">
+                <h3>About Yeboah Solomon Opoku</h3>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="images/image.jpg" alt="Our Mission">
+                <p id="modalText">I started ShopEasy with a simple mission: to make online shopping more accessible, enjoyable, and trustworthy. Our platform brings together the best products from verified sellers, ensuring quality and customer satisfaction with every purchase.</p>
+            </div>
+            <div class="modal-nav">
+                <button id="prevBtn" onclick="changeCard(-1)"></button>
+                <button id="nextBtn" onclick="changeCard(1)"></button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 ShopEasy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Popup card data
+        const popupCards = [
+            {
+                image: "images/image.jpg",
+                text: "Our future plans include expanding our product categories, implementing augmented reality features for virtual try-ons, and developing a more personalized shopping experience using AI. We're constantly innovating to serve our customers better."
+            }
+        ];
+
+        let currentCardIndex = 0;
+
+        // Function to show the popup
+        function showPopup() {
+            currentCardIndex = 0;
+            updatePopupContent();
+            document.getElementById('popupModal').style.display = 'flex';
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popupModal').style.display = 'none';
+        }
+
+        // Function to change cards
+        function changeCard(direction) {
+            currentCardIndex += direction;
+            
+            // Ensure index stays within bounds
+            if (currentCardIndex < 0) {
+                currentCardIndex = popupCards.length - 1;
+            } else if (currentCardIndex >= popupCards.length) {
+                currentCardIndex = 0;
+            }
+            
+            updatePopupContent();
+        }
+
+        // Function to update popup content
+        function updatePopupContent() {
+            const card = popupCards[currentCardIndex];
+            document.getElementById('modalImage').src = card.image;
+            document.getElementById('modalText').textContent = card.text;
+            
+            // Update button states
+            document.getElementById('prevBtn').disabled = false;
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            const modal = document.getElementById('popupModal');
+            if (event.target === modal) {
+                closePopup();
+            }
+        }
+    </script>
+</body>
+</html>

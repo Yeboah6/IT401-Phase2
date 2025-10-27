@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEasy - Audio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        .audio-section {
+            padding: 4rem 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+        .audio-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .audio-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .audio-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        .audio-player {
+            width: 100%;
+            margin: 1rem 0;
+        }
+        .audio-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+        .footer-links li {
+            margin: 0 1rem;
+        }
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">ShopEasy</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="picture.html">Products</a></li>
+                    <li><a href="audio.html" style="color: #3498db;">Audio</a></li>
+                    <li><a href="video.html">Video</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="audio-section">
+        <div class="container">
+            <h2 class="section-title">Product Audio Demos</h2>
+            <div class="audio-container">
+                <div class="audio-card">
+                    <h3 class="audio-title">Audio 1</h3>
+                    <audio controls class="audio-player">
+                        <source src="audio/Psalm 23.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <p class="audio-description">Listen to the crystal-clear audio quality of our premium wireless headphones. Experience immersive sound with deep bass and crisp highs.</p>
+                </div>
+                <div class="audio-card">
+                    <h3 class="audio-title">Audio 2</h3>
+                    <audio controls class="audio-player">
+                        <source src="audio/Dynamite.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <p class="audio-description">Hear the powerful and balanced sound output from our portable Bluetooth speaker. Perfect for both indoor and outdoor use.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <!-- <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="picture.html">Products</a></li>
+                <li><a href="audio.html" style="color: #3498db;">Audio</a></li>
+                <li><a href="video.html">Video</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul> -->
+            <p>&copy; 2025 ShopEasy. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
