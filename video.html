@@ -11,13 +11,18 @@
         <div class="container">
             <nav>
                 <div class="logo">ShopEasy</div>
-                <ul class="nav-links">
+                <ul class="nav-links" id="navLinks">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="picture.html">Products</a></li>
                     <li><a href="audio.html">Audio</a></li>
                     <li><a href="video.html" class="active">Video</a></li>
                     <li><a href="about.html">About</a></li>
                 </ul>
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
         </div>
     </header>
@@ -37,14 +42,14 @@
                     <p class="video-description">Watch our Speaker in action! See how it tracks your fitness metrics, displays notifications, and helps you stay connected throughout your day.</p>
                 </div>
                 <div class="video-card">
-                    <h3 class="video-title">Wireless Headphones Unboxing</h3>
+                    <h3 class="video-title">Wireless AirPod Unboxing</h3>
                     <div class="video-wrapper">
                         <video controls class="video-player">
-                            <source src="images/video 2.mkv" type="video/mp4">
+                            <source src="images/AirPods unboxing.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <p class="video-description">Join us for an unboxing of our premium wireless headphones. See the sleek design, comfortable fit, and all the accessories included in the package.</p>
+                    <p class="video-description">Join us for an unboxing of our premium wireless airpod. See the sleek design, comfortable fit, and all the accessories included in the package.</p>
                 </div>
             </div>
         </div>
@@ -55,5 +60,36 @@
             <p>&copy; 2025 ShopEasy. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            const isClickInsideNav = navLinks.contains(event.target);
+            const isClickOnToggle = menuToggle.contains(event.target);
+            
+            if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>

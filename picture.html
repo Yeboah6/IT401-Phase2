@@ -1,22 +1,79 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopEasy - Products</title>
 </head>
+
+<style>
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: calc(100vh - 70px);
+                background-color: #2c3e50;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 0.5rem 1rem;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+            
+            /* Animation for menu toggle */
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+
+</style>
+
 <body style="margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; color: #333;">
     <header style="background-color: #2c3e50; color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
         <div style="width: 90%; max-width: 1200px; margin: 0 auto;">
             <nav style="display: flex; justify-content: space-between; align-items: center;">
                 <div style="font-size: 1.8rem; font-weight: bold; color: #3498db;">ShopEasy</div>
-                <ul style="display: flex; list-style: none;">
+                <ul style="display: flex; list-style: none;" id="navLinks">
                     <li style="margin-left: 2rem;"><a href="index.html" style="color: white; text-decoration: none; font-weight: 500;">Home</a></li>
                     <li style="margin-left: 2rem;"><a href="picture.html" style="color: #3498db; text-decoration: none; font-weight: 500;">Products</a></li>
                     <li style="margin-left: 2rem;"><a href="audio.html" style="color: white; text-decoration: none; font-weight: 500;">Audio</a></li>
                     <li style="margin-left: 2rem;"><a href="video.html" style="color: white; text-decoration: none; font-weight: 500;">Video</a></li>
                     <li style="margin-left: 2rem;"><a href="about.html" style="color: white; text-decoration: none; font-weight: 500;">About</a></li>
                 </ul>
+                <div class="menu-toggle" id="menuToggle" style="display: none; flex-direction: column; cursor: pointer; padding: 5px;">
+                    <span style="width: 25px; height: 3px; background-color: white; margin: 3px 0; transition: 0.3s; border-radius: 2px;"></span>
+                    <span style="width: 25px; height: 3px; background-color: white; margin: 3px 0; transition: 0.3s; border-radius: 2px;"></span>
+                    <span style="width: 25px; height: 3px; background-color: white; margin: 3px 0; transition: 0.3s; border-radius: 2px;"></span>
+                </div>
             </nav>
         </div>
     </header>
@@ -66,5 +123,232 @@
             <p>&copy; 2025 ShopEasy. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            const isClickInsideNav = navLinks.contains(event.target);
+            const isClickOnToggle = menuToggle.contains(event.target);
+            
+            if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEasy - Products</title>
+</head>
+<body style="margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; color: #333;">
+    <header style="background-color: #2c3e50; color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <div style="width: 90%; max-width: 1200px; margin: 0 auto;">
+            <nav style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="font-size: 1.8rem; font-weight: bold; color: #3498db;">ShopEasy</div>
+                <ul id="navLinks" style="display: flex; list-style: none; margin: 0; padding: 0;">
+                    <li style="margin-left: 2rem;"><a href="index.html" style="color: white; text-decoration: none; font-weight: 500;">Home</a></li>
+                    <li style="margin-left: 2rem;"><a href="picture.html" style="color: #3498db; text-decoration: none; font-weight: 500;">Products</a></li>
+                    <li style="margin-left: 2rem;"><a href="audio.html" style="color: white; text-decoration: none; font-weight: 500;">Audio</a></li>
+                    <li style="margin-left: 2rem;"><a href="video.html" style="color: white; text-decoration: none; font-weight: 500;">Video</a></li>
+                    <li style="margin-left: 2rem;"><a href="about.html" style="color: white; text-decoration: none; font-weight: 500;">About</a></li>
+                </ul>
+                <div id="menuToggle" style="display: none; flex-direction: column; cursor: pointer; padding: 5px;">
+                    <span id="menuBar1" style="width: 25px; height: 3px; background-color: white; margin: 3px 0; transition: 0.3s; border-radius: 2px;"></span>
+                    <span id="menuBar2" style="width: 25px; height: 3px; background-color: white; margin: 3px 0; transition: 0.3s; border-radius: 2px;"></span>
+                    <span id="menuBar3" style="width: 25px; height: 3px; background-color: white; margin: 3px 0; transition: 0.3s; border-radius: 2px;"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section style="padding: 4rem 0;">
+        <div style="width: 90%; max-width: 1200px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem; color: #2c3e50;">Our Products</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <img src="images/image17.jpg" alt="Wireless Headphones" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Premium Wireless Headphones</h3>
+                        <p style="font-weight: bold; color: #e74c3c; font-size: 1.1rem;">$129.99</p>
+                        <p style="margin-top: 0.5rem; color: #666;">Experience crystal-clear sound with our noise-cancelling wireless headphones.</p>
+                    </div>
+                </div>
+                <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <img src="images/image12.jpg" alt="Smart Watch" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Portable Bluetooth Speaker</h3>
+                        <p style="font-weight: bold; color: #e74c3c; font-size: 1.1rem;">$199.99</p>
+                        <p style="margin-top: 0.5rem; color: #666;">Take your music anywhere with our powerful and portable Bluetooth speaker.</p>
+                    </div>
+                </div>
+                <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <img src="images/image1.jpg" alt="Bluetooth Speaker" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Bluetooth Speaker</h3>
+                        <p style="font-weight: bold; color: #e74c3c; font-size: 1.1rem;">$79.99</p>
+                        <p style="margin-top: 0.5rem; color: #666;">Take your music anywhere with our powerful Bluetooth speaker.</p>
+                    </div>
+                </div>
+                <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <img src="images/Sonic.jpg" alt="Running Shoes" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Portable Bluetooth Earpod</h3>
+                        <p style="font-weight: bold; color: #e74c3c; font-size: 1.1rem;">$89.99</p>
+                        <p style="margin-top: 0.5rem; color: #666;">Take your music anywhere with our powerful and portal Bluetooth Earpod.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background-color: #2c3e50; color: white; padding: 2rem 0; text-align: center;">
+        <div style="width: 90%; max-width: 1200px; margin: 0 auto;">
+            <p>&copy; 2025 ShopEasy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuBar1 = document.getElementById('menuBar1');
+        const menuBar2 = document.getElementById('menuBar2');
+        const menuBar3 = document.getElementById('menuBar3');
+        
+        // Check screen width and show/hide menu toggle accordingly
+        function checkScreenWidth() {
+            if (window.innerWidth <= 768) {
+                menuToggle.style.display = 'flex';
+                navLinks.style.position = 'fixed';
+                navLinks.style.top = '70px';
+                navLinks.style.right = '-100%';
+                navLinks.style.width = '80%';
+                navLinks.style.maxWidth = '300px';
+                navLinks.style.height = 'calc(100vh - 70px)';
+                navLinks.style.backgroundColor = '#2c3e50';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.alignItems = 'center';
+                navLinks.style.paddingTop = '2rem';
+                navLinks.style.transition = 'right 0.3s ease';
+                navLinks.style.boxShadow = '-5px 0 15px rgba(0,0,0,0.1)';
+                
+                // Update list items for mobile
+                const listItems = navLinks.getElementsByTagName('li');
+                for (let i = 0; i < listItems.length; i++) {
+                    listItems[i].style.margin = '1.5rem 0';
+                    listItems[i].style.marginLeft = '0';
+                }
+                
+                // Update links for mobile
+                const links = navLinks.getElementsByTagName('a');
+                for (let i = 0; i < links.length; i++) {
+                    links[i].style.fontSize = '1.2rem';
+                    links[i].style.padding = '0.5rem 1rem';
+                    links[i].style.display = 'block';
+                    links[i].style.width = '100%';
+                    links[i].style.textAlign = 'center';
+                }
+            } else {
+                menuToggle.style.display = 'none';
+                navLinks.style.position = 'static';
+                navLinks.style.flexDirection = 'row';
+                navLinks.style.width = 'auto';
+                navLinks.style.height = 'auto';
+                navLinks.style.backgroundColor = 'transparent';
+                navLinks.style.paddingTop = '0';
+                navLinks.style.boxShadow = 'none';
+                
+                // Reset list items for desktop
+                const listItems = navLinks.getElementsByTagName('li');
+                for (let i = 0; i < listItems.length; i++) {
+                    listItems[i].style.margin = '0';
+                    listItems[i].style.marginLeft = i === 0 ? '0' : '2rem';
+                }
+                
+                // Reset links for desktop
+                const links = navLinks.getElementsByTagName('a');
+                for (let i = 0; i < links.length; i++) {
+                    links[i].style.fontSize = '';
+                    links[i].style.padding = '';
+                    links[i].style.display = '';
+                    links[i].style.width = '';
+                    links[i].style.textAlign = '';
+                }
+            }
+        }
+        
+        // Initial check
+        checkScreenWidth();
+        
+        // Add event listener for window resize
+        window.addEventListener('resize', checkScreenWidth);
+        
+        // Toggle mobile menu
+        menuToggle.addEventListener('click', () => {
+            if (navLinks.style.right === '0px') {
+                navLinks.style.right = '-100%';
+                menuBar1.style.transform = '';
+                menuBar2.style.opacity = '';
+                menuBar3.style.transform = '';
+            } else {
+                navLinks.style.right = '0';
+                menuBar1.style.transform = 'rotate(-45deg) translate(-5px, 6px)';
+                menuBar2.style.opacity = '0';
+                menuBar3.style.transform = 'rotate(45deg) translate(-5px, -6px)';
+            }
+        });
+        
+        // Close menu when clicking on a link
+        const navItems = navLinks.getElementsByTagName('a');
+        for (let i = 0; i < navItems.length; i++) {
+            navItems[i].addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.right = '-100%';
+                    menuBar1.style.transform = '';
+                    menuBar2.style.opacity = '';
+                    menuBar3.style.transform = '';
+                }
+            });
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            const isClickInsideNav = navLinks.contains(event.target);
+            const isClickOnToggle = menuToggle.contains(event.target);
+            
+            if (!isClickInsideNav && !isClickOnToggle && navLinks.style.right === '0px') {
+                navLinks.style.right = '-100%';
+                menuBar1.style.transform = '';
+                menuBar2.style.opacity = '';
+                menuBar3.style.transform = '';
+            }
+        });
+    </script>
 </body>
 </html>
