@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    // Redirect to login if not logged in
+    header("Location: login.php");
+    exit();
+}
+
+$user_name = $_SESSION['user_name'] ?? 'User';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +69,7 @@
             color: #3498db;
         }
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/image6.jpg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -214,6 +227,22 @@
             }
         }
 
+        .logout-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+        }
+
     </style>
 </head>
 <body>
@@ -226,6 +255,13 @@
                     <li><a href="audio.html">Audio</a></li>
                     <li><a href="video.html">Video</a></li>
                     <li><a href="about.html">About</a></li>
+                    <li>
+                        <div class="user-info">
+                            <form action="logout.php" method="POST">
+                                <button type="submit" class="logout-btn">Logout</button>
+                            </form>
+                        </div>
+                    </li>
                 </ul>
                 <div class="menu-toggle" id="menuToggle">
                     <span></span>
@@ -238,7 +274,7 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Welcome to ShopEasy</h1>
+            <h1>Welcome, <strong><?php echo htmlspecialchars($user_name); ?></strong> <br> to <br> ShopEasy</h1>
             <p>Your one-stop destination for all your shopping needs. Discover amazing products at unbeatable prices.</p>
             <a href="picture.html" class="btn">Shop Now</a>
         </div>
